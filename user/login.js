@@ -2,7 +2,7 @@ document.getElementById("return-button").onclick = function () {
     location.replace('../home.html')
 };
 
-document.getElementById("login-in-button").onclick = function () {
+document.getElementById("login-in").onclick = function () {
     location.replace('../home.html')
 };
 

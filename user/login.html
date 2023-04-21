@@ -18,42 +18,45 @@
     <head></head>
 
     <button class="return" id="return-button">返回</button>
-    <div name="page_login_logo" align="center">
-        <img onclick="" src="../pic/logo.jpg">
+    <div class="page_login_logo">
+        <img class="logo" onclick="" src="../pic/logo.jpg">
     </div>
 
-    <div class="box login-box" align="center" id="login-box">
+
+    <div class="box login-box" id="login-box">
         <div class="input-box">
-            <div name="username">请输入手机或用户名
-                <input name="input-box-username">
-            </div>
-            <div name="password">请输入密码
-                <input name="input-box-password" type="password">
-            </div>
+            <div class="hint-text" name="username">请输入手机或用户名</div>
+            <input name="input-box-username">
+            <div class="hint-text" name="password">请输入密码</div>
+            <input name="input-box-password" type="password">
         </div>
-        <button class="login-in-button" id="login-in-button"><span>登录</span></button>
-        <button class="button to-password">忘记密码？</button>
-        <div>还没有账号？<button class="button to-register">请注册</button></div>
+        <div class="login-in-space">
+            <button class="login-in-button" id="login-in"><span>登录</span></button>
+            <button class="button to-password">忘记密码？</button>
+            <div>还没有账号？<button class="button to-register">请注册</button></div>
+        </div>
     </div>
 
 
-    <div class="box password-box" align="center" id="password-box">
+    <div class="box password-box" id="password-box">
         <div class="input-box">
-            <div>请输入手机号或邮箱<input type="text" name="" id=""></div>
-            <div>请输入新密码<input type="password" name="" id=""></div>
-            <div>请确认新密码<input type="password" name="" id=""></div>
+            <div class="hint-text">请输入手机号或邮箱</div><input type="text">
+            <div class="hint-text">请输入新密码</div><input type="password">
+            <div class="hint-text">请确认新密码</div><input type="password">
         </div>
-
-        <button class="login-in-button"><span>重置密码</span></button>
-        <button class="button to-login-in">想起密码？</button>
+        <div class="login-in-space">
+            <button class="login-in-button"><span>重置密码</span></button>
+            <button class="button to-login-in">想起密码？</button>
+        </div>
+    </div>
     </div>
 
-    <div class="box register-box" align="center" id="password-box">
-        <div>
-            <div>请输入手机<input type="text" name="" id=""></div>
-            <div>请输入邮箱<input type="text" name="" id=""></div>
-            <div>请输入密码<input type="password" placeholder="设置您的登录密码" name="" id=""></div>
-            <div>请确认密码<input type="password" placeholder="确认密码" autocomplete="off" name="" id=""></div>
+    <div class="box register-box" id="register-box">
+        <div class="input-box">
+            <div class="hint-text">请输入手机</div><input type="text">
+            <div class="hint-text">请输入邮箱</div><input type="text">
+            <div class="hint-text">请输入密码</div><input type="password" placeholder="设置您的登录密码">
+            <div class="hint-text">请确认密码 </div><input type="password" placeholder="确认密码" autocomplete="off">
         </div>
 
         <button class="login-in-button"><span>注册</span></button>
