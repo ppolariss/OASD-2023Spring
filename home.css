@@ -1,0 +1,99 @@
+
+.slogan {
+    font-size: 24pt;
+    color: red;
+
+    /* background: black; */
+    /* text-decoration-color: aliceblue; */
+}
+
+.home-header {
+    position: relative;
+    /* left: 5%; */
+    display: flex;
+    justify-content: space-between;
+    /* flex: auto; */
+    /* flex-basis: auto; */
+
+    /* white-space: x; */
+    /* vertical-align: text-topl; */
+}
+
+.logo {
+    position: relative;
+    left: 5%;
+}
+
+.user-login {
+    position: relative;
+    right: 5%;
+    font-size: 20pt;
+}
+
+.header-list {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    font-size: 20pt;
+    flex: 0.9;
+    /* flex-basis: auto; */
+}
+
+/* ul li {
+    flex: 0.5;
+} */
+
+
+body {
+    background-image: url("pic/background.jpg");
+    background-attachment: fixed;
+    shape-outside: margin-box;
+    opacity: 0.85;
+    /* shape-image-threshold: 0.2; */
+    /* background: rgba(0,0,0,0); */
+}
+
+
+
+.pic-container {
+    display: flex;
+    align-items: center;
+    /* border-color: rgb(18, 99, 171); */
+    height: 300px;
+    margin: 5%;
+
+    /* height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center; */
+}
+
+
+.pic-content {
+    background-color: #6c5a37;
+    color: #a79b7f;
+    border-radius: 20px;
+    height: 300px;
+    font-size: 16pt;
+    overflow: scroll;
+}
+
+.pic-content::-webkit-scrollbar {
+    display: none
+}
+
+
+
+
+
+
+
+/* h1{font-size:28pt;font-weight:bold;color:red;}
+    p{font-size:16pt;}
+    body,div,h1,h2{margin:0;padding:0;} */
+
+
+/* #aside1{ width:150px; background:orange; order:1; }
+    #aside2{ width:150px; background:lime; order:3; }
+    #content{ background:yellow; flex:1; order:2; }
+     */
