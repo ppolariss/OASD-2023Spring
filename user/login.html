@@ -15,7 +15,8 @@
 
 <body>
 
-    <head></head>
+    <head>
+    </head>
 
     <button class="return" id="return-button">返回</button>
     <div class="page_login_logo">
@@ -25,10 +26,14 @@
 
     <div class="box login-box" id="login-box">
         <div class="input-box">
-            <div class="hint-text" name="username">请输入手机或用户名</div>
-            <input name="input-box-username">
-            <div class="hint-text" name="password">请输入密码</div>
-            <input name="input-box-password" type="password">
+
+            <form action="login.php" method="post" id="loginForm">
+                <div class="hint-text" id="login-username-text">请输入用户名</div>
+                <input id="login_username" name="login_username">
+                <div class="hint-text" id="login-password-text">请输入密码</div>
+                <input type="login_password" name="login_password">
+            </form>
+
         </div>
         <div class="login-in-space">
             <button class="login-in-button" id="login-in"><span>登录</span></button>
@@ -38,14 +43,21 @@
     </div>
 
 
-    <div class="box password-box" id="password-box">
+    <div class="box password-box" id="password_box">
         <div class="input-box">
-            <div class="hint-text">请输入手机号或邮箱</div><input type="text">
-            <div class="hint-text">请输入新密码</div><input type="password">
-            <div class="hint-text">请确认新密码</div><input type="password">
+            <form id="password_form" name="password_form">
+                <div class="hint-text">请输入用户名</div>
+                <input id="password_username" name="password_username">
+                <div class="hint-text">请输入手机号</div>
+                <input id="password_phone" name="password_phone" type="tel">
+                <div class="hint-text">请输入新密码</div>
+                <input id="password_new_password" name="password_new_password" type="password">
+                <div class="hint-text">请确认新密码</div>
+                <input id="password_check_password" name="password_check_password" type="password">
+            </form>
         </div>
         <div class="login-in-space">
-            <button class="login-in-button"><span>重置密码</span></button>
+            <button class="login-in-button" id="change_pwd"><span>重置密码</span></button>
             <button class="button to-login-in">想起密码？</button>
         </div>
     </div>
@@ -53,13 +65,30 @@
 
     <div class="box register-box" id="register-box">
         <div class="input-box">
-            <div class="hint-text">请输入手机</div><input type="text">
-            <div class="hint-text">请输入邮箱</div><input type="text">
-            <div class="hint-text">请输入密码</div><input type="password" placeholder="设置您的登录密码">
-            <div class="hint-text">请确认密码 </div><input type="password" placeholder="确认密码" autocomplete="off">
+            <form action="register.php" method="post" id="register_form" name="register-form">
+                <div class="hint-text">请输入用户名</div><input type="text" id="register_username" name="register_username">
+                <div class="hint-text">请输入密码</div><input type="password" id="register_password"
+                    name="register_password">
+                <!-- placeholder="设置您的登录密码" -->
+                <div class="hint-text">请确认密码 </div><input type="password" id="register_password_confirm"
+                    name="register_password_confirm" autocomplete="off">
+
+                <div class="hint-text">请输入手机号</div><input type="tel" id="register_phone" name="register_phone">
+                <div class="hint-text">请输入电子邮箱</div><input type="email" id="email" name="email">
+                <div class="hint-text">请输入家庭住址</div><input type="text" id="address" name="address">
+                <div class="hint-text">请输入性别</div>
+                <input type="radio" name="gender" id="gender1" value="male">男<br>
+                <input type="radio" name="gender" id="gender2" value="female">女<br>
+                <input type="radio" name="gender" id="gender3" value="other">其他<br>
+                <input type="radio" name="gender" id="gender4" value="secret">保密<br>
+                <div class="hint-text">请输入出生日期</div><input type="date" id="birthday" name="birthday">
+                <div class="hint-text">请输入国籍</div><input type="text" id="nationality" name="nationality">
+                <button type="submit" class="login-in-button">注册</button>
+                <!-- onclick="register()" -->
+            </form>
         </div>
 
-        <button class="login-in-button"><span>注册</span></button>
+        <!-- <button class="login-in-button"><span>注册</span></button> -->
         <!-- type="submit" -->
         <div>已有账号？<button class="button to-login-in">请登录</button></div>
     </div>

@@ -1,0 +1,99 @@
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <title>Lecture4 Sample</title>
+	<style>
+		#ul_inline li{display:inline;}
+		#img_block{display:block;}
+		#img_none{display:none;}
+    </style>
+  </head>
+<body>
+  	<ul>
+ 	   <li>China</li><li>EU</li><li>USA</li>
+  	</ul>
+  	<ul id="ul_inline">
+ 	   <li>China</li><li>EU</li><li>USA</li>
+  	</ul>
+	<p><img src="pictures/logo.gif">
+	consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+	</p>
+	<p><img id="img_block" src="pictures/logo.gif">
+	consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+	</p>
+	<p><img id="img_none" src="pictures/logo.gif">
+	consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+	</p>
+  </body>
+</html> -->
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Lecture4 Sample</title>
+	<style>
+		/* body { display: flex; } */
+		ul {
+			border: 1px solid red;
+			margin-right: 5em;
+		}
+
+		li {
+			border: 1px solid silver;
+		}
+
+		ul.contents {
+			display: table;
+		}
+	</style>
+</head>
+
+
+
+<body>
+	<div>
+		<p>click the Button:</p>
+		<button type="button" value="Submit" onclick="submitData()">
+	</div>
+	<div id="output"></div>
+	<script type="text/javascript">
+		function submitData() {
+			// var xhr = new XMLHttpRequest();
+			if (window.XMLHttpRequest) {
+				// IE7+, Firefox, Chrome, Opera, Safari 浏览器执行的代码
+				xhr = new XMLHttpRequest();
+			}
+			else {
+				//IE6, IE5 浏览器执行的代码
+				xhr = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xhr.onreadystatechange = function () {
+				if (xhr.readyState == 4) {
+					if (xhr.status == 200 || xhr.status == 304) {
+						// alert("Request was successful:" + xhr.status);
+						// if (xhr.response !== xhr.responseText)
+						// 	alert(xhr.response);
+						document.getElementById("output").innerHTML = xhr.responseText;
+						// alert(xhr.responseText);
+						// document.getElementById("output").innerHTML = xhr.responseText;
+						// alert("a");
+					}
+					else {
+						alert("Request was unsuccessful:" + xhr.statusText);
+						document.getElementById("output").innerHTML = xhr.responseText;
+					}
+				}
+			}
+			xhr.open("post", "user/login.php", true);
+			xhr.send(document.forms[0]);
+		}
+	</script>
+	<form action="./test.php" method="post" enctype="multipart/form-data">
+		<!-- <input type="hidden" name="MAX_FILE_SIZE" value='176942' /> -->
+		请选择您要上传的文件：<input type="file" name='myfile' />
+		<!-- <input type="file" name="myFile"  accept="image/jpeg,image/gif,image/png"/><br /> -->
+		<input type="submit" value="上传文件" />
+	</form>
+</body>
+
+</html>
