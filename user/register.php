@@ -12,6 +12,28 @@ $gender = htmlspecialchars($_POST['gender']);
 
 header("Content-Type:text/plain;charset=utf-8");
 
+
+$email = addslashes($email);
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    http_response_code(400);
+    die("电子邮箱格式错误");
+}
+$nationality = addslashes($nationality);
+$address = addslashes($address);
+$birthday = addslashes($birthday);
+if (date("Y-m-d") < $birthday) {
+    http_response_code(400);
+    die("出生日期格式错误");
+}
+$gender = addslashes($gender);
+if ($gender != "male" && $gender != "female" && $gender != "other" && $gender != "secret") {
+    http_response_code(400);
+    die("性别格式错误");
+}
+$hash = md5(time());
+$hash_pwd = md5($password . $hash);
+
+
 try {
     try {
         $pdo = new PDO($dsn, $user, $pwd); 
@@ -41,28 +63,10 @@ try {
                 die("手机号已被注册");
             }
         }
-        $email = addslashes($email);
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            http_response_code(400);
-            die("电子邮箱格式错误");
-        }
-        $nationality = addslashes($nationality);
-        $address = addslashes($address);
-        $birthday = addslashes($birthday);
-        if (date("Y-m-d") < $birthday) {
-            http_response_code(400);
-            die("出生日期格式错误");
-        }
-        $gender = addslashes($gender);
-        if ($gender != "male" && $gender != "female" && $gender != "other" && $gender != "secret") {
-            http_response_code(400);
-            die("性别格式错误");
-        }
-        $hash = md5(time());
-        $hash_pwd = md5($password . $hash);
 
-        $sql = "INSERT INTO user (isadmin, username, password,hash, phone, email,address,birthday,nationality,gender) 
-    VALUES (0, '$username', '$hash_pwd','$hash','$phone', '$email','$address', '$birthday', '$nationality', '$gender')";
+
+        $sql = "INSERT INTO user ( username, password,hash, phone, email,address,birthday,nationality,gender,account) 
+    VALUES ( '$username', '$hash_pwd','$hash','$phone', '$email','$address', '$birthday', '$nationality', '$gender',0)";
 
 
         $pdo->exec($sql);
@@ -71,7 +75,7 @@ try {
         $pdo = null;
     } catch (PDOException $e) {
         http_response_code(400);
-        echo "注册失败";
+        // echo "注册失败";
         die($e->getMessage());
     }
 } catch (PDOException $e) {
