@@ -1,3 +1,8 @@
+// username =  localStorage.getItem("username")
+// if(username==null)
+// console.log("hhh");
+// else console.log(username)
+
 document.getElementById("return-button").onclick = function () {
     location.replace('../home.html')
 };
@@ -33,6 +38,7 @@ document.getElementById("login-in").onclick = function () {
                 if (xhr.status == 200 || xhr.status == 304) {
                     // alert("Request was successful:" + xhr.responseText);
                     alert("登录成功");
+                    localStorage.setItem("username", FD.get("login_username"))
                 }
                 else {
                     // alert("Request was unsuccessful:" + xhr.statusText);
@@ -44,6 +50,7 @@ document.getElementById("login-in").onclick = function () {
         xhr.send(FD);
 
     }
+    
 
 
     // alert(Object.keys(form));
@@ -56,6 +63,12 @@ document.getElementById("login-in").onclick = function () {
     //     sendData();
     // });
 };
+
+
+function exit(){
+    // 退出账号，删掉username
+    localStorage.removeItem("username")
+}
 
 function register() {
     var xhr = new XMLHttpRequest();

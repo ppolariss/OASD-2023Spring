@@ -1,4 +1,16 @@
 <?php
+
+session_start();
+if (!isset($_SESSION["user_id"]))
+{
+    http_response_code(401);
+    die("未登录");
+}
+$user_id = $_SESSION["user_id"];
+// if (isset($_SESSION["user_id"]))
+//     echo $_SESSION["user_id"];
+// else
+//     echo 1;
 require_once "../MyUtils/connectMysql.php";
 
 
@@ -48,8 +60,9 @@ try {
     $pdo = new PDO($dsn, $user, $pwd);
     $newname = md5(time());
     $art_pic_path = $newname . '.png';
-    $sql = "INSERT INTO art (art_name, author, price,pic, description, weight,size,art_era,style,user_id) 
-    VALUES ('$art_name', '$author', $price,'$art_pic_path','$description', $weight,'$size', '$art_year', '$style', 0)";
+    $now = date("Y-m-d H:i:s");
+    $sql = "INSERT INTO art (art_name, author, price,pic, description, weight,size,art_era,style,user_id,create_at) 
+    VALUES ('$art_name', '$author', $price,'$art_pic_path','$description', $weight,'$size', '$art_year', '$style', '$user_id', '$now')";
     $pdo->exec($sql);
     $pdo = null;
     $filepath = './artPic/';

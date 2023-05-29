@@ -1,4 +1,7 @@
 <?php
+session_start();
+
+
 require_once "../MyUtils/connectMysql.php";
 
 
@@ -38,6 +41,7 @@ try {
     {
         $cpwd = md5($password . $row["hash"]);
         if ($cpwd ==$row["password"]) {
+            $_SESSION["user_id"] = $row["id"];
             http_response_code(200);
             die();
         }
