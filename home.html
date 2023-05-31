@@ -7,14 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>home</title>
 
-    <link type="text/css" rel="Stylesheet" href="reset.css">
-    <link type="text/css" rel="Stylesheet" href="speciality.css">
-    <link type="text/css" rel="Stylesheet" href="home.css">
+    <link type="text/css" rel="Stylesheet" href="./css/reset.css">
+    <link type="text/css" rel="Stylesheet" href="./css/speciality.css">
+    <link type="text/css" rel="Stylesheet" href="./css/home.css">
     <!-- <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
     <!-- <script src="home.css" defer></script>
     <script src="reset.css" defer></script> -->
 
     <!-- <base href="file:///"> -->
+    <script src="./js/transferToArtDom.js" defer></script>
+    <script src="./js/home.js" defer></script>
 </head>
 
 <body>
@@ -25,19 +27,18 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="home-header">
             <div class="logo">
-                <a href="home.html"><img src="pic/logo.jpg" width="57" height="57" alt="logo"></a>
+                <a href="./home.html"><img src="pic/logo.jpg" width="57" height="57" alt="logo"></a>
             </div>
             <ul class="header-list">
-                <li><a href="home.html" class="active">首页</a></li>
-                <li><a href="resources.html">精品资源</a></li>
-                <li><a href="event.html">限时活动</a></li>
-                <li><a href="cart.html">购物车</a></li>
+                <li><a href="./home.html" class="active">首页</a></li>
+                <li><a href="./html/art.html">全部商品</a></li>
+                <li><a href="./html/cart.html">购物车</a></li>
                 <li><a href="topics.html">专题</a></li>
-                <li><a href="artview.html">艺术视野</a></li>
-                <li><a href="user/login.html">个人中心</a></li>
+                <li><a href="./html/release.html">发布商品</a></li>
+                <li><a href="./html/userinfo.html">个人中心</a></li>
             </ul>
             <div class="user-login">
-                <a name="user-login-button" href="user/login.html">登录</a>
+                <a name="user-login-button" href="./html/login.html">登录</a>
             </div>
         </div>
     </header>
@@ -67,31 +68,8 @@
         </p>
     </div>
 
-    <div class="pic-container">
-        <div class="pic">
-            <img src="pic/xk.jpg" width="300" height="300" alt="pic">
-        </div>
-        <p class="pic-content">《星月夜》（The Starry Night）是荷兰后印象派画家文森特·梵高
-            于1889年在法国圣雷米的一家精神病院里创作的一幅油画，是文森特·梵高的代表作之
-            一，现藏纽约现代艺术博物馆。在这幅画中，文森特·梵高用夸张的手法，生动地描绘
-            了充满运动和变化的星空。 整个画面被一股汹涌、动荡的蓝绿色激流所吞噬，旋转、
-            躁动、卷曲的星云使夜空变得异常活跃，脱离现实的景象反映出梵·高躁动不安的情感
-            和疯狂的幻觉世界。
-        </p>
-    </div>
+    <span id="latest-art"></span>
 
-    <div class="pic-container">
-        <div class="pic">
-            <img src="pic/xk.jpg" width="300" height="300" alt="pic">
-        </div>
-        <p class="pic-content">《星月夜》（The Starry Night）是荷兰后印象派画家文森特·梵高
-            于1889年在法国圣雷米的一家精神病院里创作的一幅油画，是文森特·梵高的代表作之
-            一，现藏纽约现代艺术博物馆。在这幅画中，文森特·梵高用夸张的手法，生动地描绘
-            了充满运动和变化的星空。 整个画面被一股汹涌、动荡的蓝绿色激流所吞噬，旋转、
-            躁动、卷曲的星云使夜空变得异常活跃，脱离现实的景象反映出梵·高躁动不安的情感
-            和疯狂的幻觉世界。
-        </p>
-    </div>
 
 </body>
 
