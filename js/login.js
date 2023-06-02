@@ -2,13 +2,25 @@
 // if(username==null)
 // console.log("hhh");
 // else console.log(username)
-
+document.title = "艺术品商城";
 document.getElementById("return-button").onclick = function () {
     location.replace('../home.html')
 };
 
 
 document.getElementById("login-in").onclick = function () {
+    if (typeof isConfirmClick == 'undefined')
+        isConfirmClick = true;
+
+    if (isConfirmClick) {
+        isConfirmClick = false;
+        setTimeout(function () { isConfirmClick = true; }, 3000);
+    } else {
+        alert('请勿过快点击');
+        return;
+    }
+
+
     var form = document.getElementById("loginForm");
     // form.append("aa","a");
     // alert(Object.keys(form))
@@ -37,11 +49,12 @@ document.getElementById("login-in").onclick = function () {
             if (xhr.readyState == 4) {
                 if (xhr.status == 200 || xhr.status == 304) {
                     // alert("Request was successful:" + xhr.responseText);
-                    alert("登录成功");
+                    // alert("登录成功");
                     localStorage.setItem("username", FD.get("login_username"))
                     localStorage.setItem("user_id", xhr.responseText)
                     // console.log(xhr.responseText)
                     // console.log(localStorage.getItem("user_id"))
+                    location.href = "../home.html"
                 }
                 else {
                     // alert("Request was unsuccessful:" + xhr.statusText);
@@ -53,7 +66,7 @@ document.getElementById("login-in").onclick = function () {
         xhr.send(FD);
 
     }
-    
+
 
 
     // alert(Object.keys(form));
@@ -68,14 +81,30 @@ document.getElementById("login-in").onclick = function () {
 };
 
 
-function exit(){
+function exit() {
     // 退出账号，删掉username
     localStorage.removeItem("username")
+    localStorage.removeItem("user_id")
 }
 
 function register() {
+    if (typeof canReg == 'undefined')
+        canReg = true;
+
+    if (canReg) {
+        canReg = false;
+        setTimeout(function () { canReg = true; }, 3000);
+    } else {
+        alert('请勿过快点击');
+        return;
+    }
+
     var xhr = new XMLHttpRequest();
     var FD = new FormData(document.getElementById("register_form"));
+    if (!validateCode(FD.get("verificationCode2"))) {
+        alert("验证码错误")
+        return
+    }
     if (FD.get("register_password") != FD.get("register_password_confirm")) {
         alert("两次输入密码不同")
         return;
@@ -91,7 +120,7 @@ function register() {
             }
             else {
                 // alert("Request was unsuccessful:" + xhr.statusText);
-                alert("登录失败，" + xhr.responseText)
+                alert("注册失败，" + xhr.responseText)
             }
         }
     }
@@ -134,40 +163,49 @@ document.getElementById("change_pwd").onclick = function () {
     sendData();
 };
 
-var tlog = document.getElementsByClassName("to-login-in");
-var tpsw = document.getElementsByClassName("to-password");
-var treg = document.getElementsByClassName("to-register");
 
-var log = document.getElementsByClassName("login-box")[0];
-var reg = document.getElementsByClassName("register-box")[0];
-var psw = document.getElementsByClassName("password-box")[0];
-
-tlog[0].onclick = tolog;
-tlog[1].onclick = tolog;
-
-function tolog() {
-    log.style.display = "block"
-    reg.style.display = "none"
-    psw.style.display = "none"
-}
-
-tpsw[0].onclick = function () {
-    psw.style.display = "block"
-    reg.style.display = "none"
-    log.style.display = "none"
-}
-
-treg[0].onclick = function () {
-    reg.style.display = "block"
-    log.style.display = "none"
-    psw.style.display = "none"
-}
 
 
 
 //页面加载时，生成随机验证码
 window.onload = function () {
+    var tlog = document.getElementsByClassName("to-login-in");
+    var tpsw = document.getElementsByClassName("to-password");
+    var treg = document.getElementsByClassName("to-register");
+
+    var log = document.getElementsByClassName("login-box")[0];
+    var reg = document.getElementsByClassName("register-box")[0];
+    var psw = document.getElementsByClassName("password-box")[0];
+
+    tlog[0].onclick = tolog;
+    tlog[1].onclick = tolog;
+
+    function tolog() {
+        log.style.display = "block"
+        reg.style.display = "none"
+        psw.style.display = "none"
+        // document.getElementById("canvas").removeAttribute("id")
+        // document.getElementById("canvas2").setAttribute("id", "canvas")
+    }
+    tpsw[0].onclick = function () {
+        psw.style.display = "block"
+        reg.style.display = "none"
+        log.style.display = "none"
+    }
+
+    treg[0].onclick = function () {
+        reg.style.display = "block"
+        log.style.display = "none"
+        psw.style.display = "none"
+
+        // document.getElementById("canvas").removeAttribute("id")
+        // document.getElementById("canvas").setAttribute("id", "canvas2")
+        // document.getElementById("canvas2").removeAttribute("id")
+        // document.getElementById("canvas").setAttribute("id", "canvas")
+    }
+
     drawPic();
+
 }
 
 //检查验证码是否正确
@@ -252,4 +290,47 @@ function drawPic() {
     }
     correctCode = _picTxt;
     return _picTxt;//返回随机数字符串
+}
+
+
+
+
+document.getElementById("register_password").onchange = () => {
+    pwd = document.getElementById("register_password").value
+    complexity = 0
+    if (pwd.length >= 6) {
+        complexity++
+    }
+    if (pwd.match(/[a-z]/)) {
+        complexity++
+    }
+    if (pwd.match(/[A-Z]/)) {
+        complexity++
+    }
+    if (pwd.match(/[0-9]/)) {
+        complexity++
+    }
+    if (pwd.match(/[^a-zA-Z0-9]/)) {
+        complexity++
+    }
+    if (complexity <= 2) {
+        document.getElementById("complexity").style.color = "red"
+        document.getElementById("complexity").innerHTML = "密码强度：弱<br>密码尽量大于6位，尽量包含大小写字母、数字和特殊字符中的三种，尽量不要包含生日。"
+    }
+    if (complexity == 3) {
+        document.getElementById("complexity").innerHTML = "密码强度：中"
+    }
+    if (complexity > 3) {
+        document.getElementById("complexity").style.color = "black"
+        document.getElementById("complexity").innerHTML = "密码强度：强"
+    }
+    birthday = document.getElementById("birthday").value
+    if (birthday != "") {
+        birthday = birthday.split("-")
+        str1 = birthday[0] + birthday[1] + birthday[2]
+        str2 = birthday[0][2] + birthday[0][3] + birthday[1] + birthday[2]
+        if (pwd.match(str1) || pwd.match(str2)) {
+            document.getElementById("complexity").innerHTML += "<br>（密码中包含生日）"
+        }
+    }
 }

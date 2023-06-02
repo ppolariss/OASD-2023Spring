@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>userinfo</title>
+    <link rel="stylesheet" href="../css/userInfo.css" type="text/css">
+    <script src="../js/transferToArtDom.js" defer></script>
+    <script src="../js/userinfo.js" defer></script>
+</head>
+
+<body>
+    <span class="cataName">个人信息</span><br>
+    <span id="info">
+        用户id：<span id="user-id"></span><br>
+        用户名：<span id="username"></span><br>
+        电子邮箱：<span id="email"></span><br>
+        电话：<span id="phone"></span><br>
+        地址：<span id="address"></span><br>
+        性别：<span id="gender"></span><br>
+        生日：<span id="birthday"></span><br>
+        国籍：<span id="nationality"></span><br>
+        余额：<span id="balance"></span><br>
+        <!-- <dialog id="recharge-dialog">充值 -->
+        <dialog id="rechargeDialog">
+            <input type="number" id="amount">
+            <button id="recharge">充值</button>
+        </dialog>
+        <button id="charge">充值</button>
+        <!-- </dialog> -->
+    </span><br>
+    <span class="cataName">在售中</span>
+    <span id="released"></span><br>
+    <!-- id art-name author pic price visits create-at -->
+    <span class="cataName">已售出</span>
+    <span id="sold"></span><br>
+    <span class="cataName">已购买</span>
+    <span id="purchased"></span>
+    <!-- buy-at art-id price -->
+</body>
+
+</html>

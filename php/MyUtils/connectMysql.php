@@ -6,7 +6,7 @@ $user = 'root'; //数据库连接用户名
 $pwd = 'root'; //对应的密码
 $dsn = "$dbms:host=$host;dbname=$dbName";
 
-
+date_default_timezone_set('Asia/Shanghai');
 // $dbms = 'mysql'; //数据库类型
 // $host = 'localhost'; //数据库主机名
 // $dbName = 'transaction'; //使用的数据库

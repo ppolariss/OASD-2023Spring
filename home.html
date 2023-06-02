@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>home</title>
 
-    <link type="text/css" rel="Stylesheet" href="./css/reset.css">
+    <!-- <link type="text/css" rel="Stylesheet" href="./css/reset.css"> -->
     <link type="text/css" rel="Stylesheet" href="./css/speciality.css">
     <link type="text/css" rel="Stylesheet" href="./css/home.css">
     <!-- <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
@@ -20,57 +20,45 @@
 </head>
 
 <body>
-    <header>
-        <p class="slogan" align="center">让心灵碰撞，让艺术流动</p>
 
+    <!-- <audio autoplay="true" loop="true"> <source src="video/distance.mp3"></audio> -->
+    <header>
+        <span><a href="./home.html"><img id="logo-img" src="pic/logo.png" height="57" alt="logo"></a></span>
+        <p class="slogan" align="center">让心灵碰撞，让艺术流动</p>
+        <span id="sayHello"></span>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="home-header">
-            <div class="logo">
-                <a href="./home.html"><img src="pic/logo.jpg" width="57" height="57" alt="logo"></a>
-            </div>
+            <!-- <div class="logo">
+                <a href="./home.html"><img src="pic/logo.png" height="57" alt="logo"></a>
+            </div> -->
             <ul class="header-list">
                 <li><a href="./home.html" class="active">首页</a></li>
                 <li><a href="./html/art.html">全部商品</a></li>
-                <li><a href="./html/cart.html">购物车</a></li>
-                <li><a href="topics.html">专题</a></li>
-                <li><a href="./html/release.html">发布商品</a></li>
-                <li><a href="./html/userinfo.html">个人中心</a></li>
+                <li id="cart-display"><a href="./html/cart.html">购物车</a></li>
+                <li><input type="text" id="search-content"><button id="search">搜索</button></li>
+                <li><a href="./html/art.html">高级搜索</a></li>
+                <li id="release-display"><a href="./html/release.html">发布商品</a></li>
+                <li id="userinfo-display"><a href="./html/userinfo.html">个人中心</a></li>
+                <li id="login-display"><a name="user-login-button" href="./html/login.html">登录</a></li>
+                <li id="logout-display"><a name="user-logout-button" id="logout" href="">登出</a></li>
             </ul>
-            <div class="user-login">
+            <!-- <div class="user-login">
+                <a name="user-logout-button" id="logout">登出</a>
+            </div> -->
+            <!-- <div class="user-login">
                 <a name="user-login-button" href="./html/login.html">登录</a>
-            </div>
+            </div> -->
         </div>
     </header>
-
-    <div class="pic-container">
-        <div class="pic">
-            <img src="pic/xk.jpg" width="300" height="300" alt="pic">
-        </div>
-        <p class="pic-content">《星月夜》（The Starry Night）是荷兰后印象派画家文森特·梵高
-            于1889年在法国圣雷米的一家精神病院里创作的一幅油画，是文森特·梵高的代表作之
-            一，现藏纽约现代艺术博物馆。在这幅画中，文森特·梵高用夸张的手法，生动地描绘
-            了充满运动和变化的星空。 整个画面被一股汹涌、动荡的蓝绿色激流所吞噬，旋转、
-            躁动、卷曲的星云使夜空变得异常活跃，脱离现实的景象反映出梵·高躁动不安的情感
-            和疯狂的幻觉世界。
-            《星月夜》（The Starry Night）是荷兰后印象派画家文森特·梵高
-            于1889年在法国圣雷米的一家精神病院里创作的一幅油画，是文森特·梵高的代表作之
-            一，现藏纽约现代艺术博物馆。在这幅画中，文森特·梵高用夸张的手法，生动地描绘
-            了充满运动和变化的星空。 整个画面被一股汹涌、动荡的蓝绿色激流所吞噬，旋转、
-            躁动、卷曲的星云使夜空变得异常活跃，脱离现实的景象反映出梵·高躁动不安的情感
-            和疯狂的幻觉世界。
-            《星月夜》（The Starry Night）是荷兰后印象派画家文森特·梵高
-            于1889年在法国圣雷米的一家精神病院里创作的一幅油画，是文森特·梵高的代表作之
-            一，现藏纽约现代艺术博物馆。在这幅画中，文森特·梵高用夸张的手法，生动地描绘
-            了充满运动和变化的星空。 整个画面被一股汹涌、动荡的蓝绿色激流所吞噬，旋转、
-            躁动、卷曲的星云使夜空变得异常活跃，脱离现实的景象反映出梵·高躁动不安的情感
-            和疯狂的幻觉世界。
-        </p>
-    </div>
+    <audio controls autoplay loop src="./video/distance.mp3"> </audio>
+    <!-- <a href="./video/distance.mp3">
+            Download audio
+        </a> -->
 
     <span id="latest-art"></span>
 
-
+    <footer class="footer">CopyRight@张文擘</footer>
 </body>
 
 

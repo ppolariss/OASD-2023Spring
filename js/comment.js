@@ -1,3 +1,4 @@
+document.title = "艺术品商城";
 var searchUrl = window.location.href;
 var searchData = searchUrl.split("="); //截取 url中的“=”,获得“=”后面的参数
 var art_id = decodeURI(searchData[1]); //decodeURI解码
@@ -6,14 +7,21 @@ window.onload = function () {
     // 先根据floor_id排序 倒序
     // 遍历，如果hole_id不同，就新建一个div id=hole-hole_id
     // 如果hole_id相同，就在这个div里面append一个div id=comment-comment_id
+
     xhr = new XMLHttpRequest();
     xhr.open("GET", "../php/getArtComment.php?art_id=" + art_id, true);
     xhr.send();
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4) {
             if (xhr.status == 200 || xhr.status == 304) {
-                xhr.responseText;
-                comments = JSON.parse(xhr.responseText);
+                console.log(xhr.responseText)
+                res = JSON.parse(xhr.responseText);
+                art = res["art"];
+                document.getElementById("art-img").src = "../pic/artPic/" + art.pic;
+                document.getElementById("art-name").innerText = art.art_name;
+
+                comments = res["comment"];
+                console.log(comments);
                 if (!Array.isArray(comments)) {
                     console.log("获取评论不是数组");
                 }
@@ -89,8 +97,13 @@ transferToFloor = (comment) => {
     htmlStr = "<span data-floor_id=" + comment.floor_id + ">" +
         "<div class=\"floor-number\">##" + comment.floor_id + "</div><div class=\"content\">" + comment.content +
         "</div><div class=\"userid\">用户id：" + comment.user_id +
-        "</div><div class=\"likes\">喜欢：" + comment.likes + "</div><div class=\"create-at\">时间：" + comment.create_at + "</div>" +
-        "<button class=\"like\">like</button>";
+        "</div><div class=\"likes\">点赞：" + comment.likes + "</div><div class=\"create-at\">时间：" + comment.create_at + "</div>";
+    if (comment.is_liked) {
+        htmlStr += "<button class=\"like\" style=\"background-color: pink;\">喜欢</button>";
+    } else {
+        htmlStr += "<button class=\"like\">喜欢</button>";
+    }
+        
     if (comment.user_id == localStorage.getItem("user_id")) {
         htmlStr += "<button class=\"delete-comment\">删除</button>";
     }

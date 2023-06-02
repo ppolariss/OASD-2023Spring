@@ -1,3 +1,4 @@
+document.title = "艺术品商城";
 window.onload = function () {
     xhr = new XMLHttpRequest();
     xhr.open("GET", "../php/getCart.php", true);
@@ -46,6 +47,7 @@ modifyCart = () => {
 
 
 document.getElementById("submit").onclick = () => {
+    if(!confirm("确认购买？")) return;
     var checkCart = document.getElementsByClassName("checkCart");
     var cartList = [];
     for (var i = 0; i < checkCart.length; i++) {

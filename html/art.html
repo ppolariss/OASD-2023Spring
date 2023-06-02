@@ -18,6 +18,31 @@
 
 <body>
     <header></header>
+    <input type="text" id="search-content">
+    <button id="search">搜索</button>
+    <form action="" id="search-assign">
+        <input type="radio" id="search-assign-1" name="assign" class="assign" value="art_name">按作品名
+        <input type="radio" id="search-assign-2" name="assign" class="assign" value="description">按简介
+        <input type="radio" id="search-assign-3" name="assign" class="assign" value="author">按作者
+        <input type="radio" id="search-assign-4" name="assign" class="assign" value="all" checked>查询所有
+    </form>
+    <form action="" id="sort-method">
+        <input type="radio" id="method1" name="method" class="method" value="price">按价格
+        <input type="radio" id="method2" name="method" class="method" value="visits">按浏览量
+        <input type="radio" id="method3" name="method" class="method" value="create">按发布时间
+        <input type="radio" id="method4" name="method" class="method" value="era">按年代
+    </form>
+    <button id="asc">升序搜索</button>
+    <button id="desc">降序搜索</button>
+    <div id="search-result">
+        <span id="totalResult"></span>
+        有<span id="totalPage"></span>页
+        现在是第<span id="nowPage"></span>页
+        <input type="number" id="jumpPage">
+        <button id="jump">跳转</button>
+        <button id="lastPage">上一页</button>
+        <button id="nextPage">下一页</button>
+    </div>
     <span id="all-art"></span>
 </body>
 

@@ -11,6 +11,7 @@
     <link type="text/css" rel="Stylesheet" href="../css/reset.css">
     <link type="text/css" rel="Stylesheet" href="../css/login.css">
     <script src="../js/login.js" defer></script>
+    <!-- <script src="../js/clickButton.js"></script> -->
 </head>
 
 <body>
@@ -19,11 +20,8 @@
     </head>
 
     <button class="return" id="return-button">返回</button>
-    <div class="page_login_logo">
-        <img class="logo" onclick="" src="../pic/logo.jpg">
-    </div>
 
-
+    <canvas id="canvas" width="150px" height="50px"></canvas>
     <div class="box login-box" id="login-box">
         <div class="input-box">
 
@@ -34,7 +32,6 @@
                 <input type="login_password" name="login_password">
                 <div class="hint-text" id="login-verificationCode-text">请输入验证码</div>
                 <input type="text" id="verificationCode" name="verificationCode">
-                <canvas id="canvas" width="150px" height="50px"></canvas>
             </form>
 
         </div>
@@ -71,7 +68,8 @@
             <form action="register.php" method="post" id="register_form" name="register-form">
                 <div class="hint-text">请输入用户名</div><input type="text" id="register_username" name="register_username">
                 <div class="hint-text">请输入密码</div><input type="password" id="register_password"
-                    name="register_password">
+                    name="register_password"><br>
+                <span id="complexity"></span>
                 <!-- placeholder="设置您的登录密码" -->
                 <div class="hint-text">请确认密码 </div><input type="password" id="register_password_confirm"
                     name="register_password_confirm" autocomplete="off">
@@ -86,6 +84,11 @@
                 <input type="radio" name="gender" id="gender4" value="secret">保密<br>
                 <div class="hint-text">请输入出生日期</div><input type="date" id="birthday" name="birthday">
                 <div class="hint-text">请输入国籍</div><input type="text" id="nationality" name="nationality">
+
+                <div class="hint-text" id="register-verificationCode-text">请输入验证码</div>
+                <input type="text" id="verificationCode2" name="verificationCode2">
+                <!-- <canvas id="canvas2" width="150px" height="50px"></canvas> -->
+                
                 <button type="submit" class="login-in-button">注册</button>
                 <!-- onclick="register()" -->
             </form>

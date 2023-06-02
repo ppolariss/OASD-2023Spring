@@ -7,10 +7,6 @@ if (!isset($_SESSION["user_id"]))
     die("未登录");
 }
 $user_id = $_SESSION["user_id"];
-// if (isset($_SESSION["user_id"]))
-//     echo $_SESSION["user_id"];
-// else
-//     echo 1;
 require_once "./MyUtils/connectMysql.php";
 
 
@@ -64,12 +60,14 @@ try {
     $sql = "INSERT INTO art (art_name, author, price,pic, description, weight,size,art_era,style,user_id,create_at) 
     VALUES ('$art_name', '$author', $price,'$art_pic_path','$description', $weight,'$size', '$art_year', '$style', '$user_id', '$now')";
     $pdo->exec($sql);
+    $art_id = $pdo->lastInsertId();
     $pdo = null;
     $filepath = '../pic/artPic/';
     if (!move_uploaded_file($pic, $filepath . $newname . ".png")) {
         http_response_code(500);
         echo "图片上传失败";
     }
+    echo $art_id;
     die(200);
 } catch (PDOException $e) {
     http_response_code(500);

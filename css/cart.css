@@ -1,0 +1,56 @@
+html{
+    background-color: lightyellow;
+}
+
+button {
+    border: none;
+    border-radius: 20px;
+    background: none;
+    cursor: pointer;
+    height: 100px;
+    width: 200px;
+    font-size: 30px;
+    text-shadow: 1px 1px 2px plum
+}
+
+button:hover {
+    background: pink;
+}
+
+
+img{
+    height: 300px;
+    width: auto ;
+    cursor: pointer;
+}
+
+.art{
+    height: 300px;
+    border-radius: 5%;
+    column-count: 2;
+    border-style:dotted;
+    border-color: aquamarine;
+    border-width: 3px;
+    padding: 5px;
+    margin-left: 20%;
+    margin-right: 20%;
+    text-align: left;
+    font-size: 20px;
+}
+
+.art-name{
+    text-align: center;
+    font-size: 40px;
+    color: blueviolet;
+    text-shadow: 1px 1px 2px rgb(208, 47, 223);
+}
+
+
+body{
+    text-align: center;
+}
+
+.checkCart{
+    height: 30px;
+    width: 30px;
+}
