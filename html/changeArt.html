@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>change art</title>
+    <!-- <script src="../js/changeArt.js" defer></script> -->
+    <link rel="stylesheet" href="../css/release.css" rel="Stylesheet">
+    <script src="../js/clickButton.js" defer></script>
+    <script src="../js/releaseUtils.js" defer></script>
+    <script src="../js/changeArt.js" defer></script>
+</head>
+
+<body>
+
+    <div class="box">
+        <div class="small">
+            <img src="" alt="" id="release-img" width="350px">
+            <div class="mask"></div>
+        </div>
+        <div class="big">
+            <img src="" id="big-img" alt="" width="1000px" />
+        </div>
+    </div>
+
+    <form action="" enctype="multipart/form-data" id="releaseForm">
+        <p id="input-form">
+            <label>请上传图片<input type="file" id="pic" name="pic" accept="iamge/*"></label><span id="pic-msg" class="msg"></span><br>
+            <label>作品名称<input type="text" id="art_name" name="art_name"></label><span id="art_name-msg"
+                class="msg"></span><br>
+            <label>作品作者 <input type="text" id="author" name="author"></label><span id="author-msg" class="msg"></span><br>
+            <label>定价<input type="number" id="price" name="price"></label><span id="price-msg" class="msg"></span><br>
+            <label>简介<input type="text" id="description" name="description"></label><span id="description-msg"
+                class="msg"></span><br>
+            <label>质量<input type="number" id="weight" name="weight"></label><span id="weight-msg" class="msg"></span><br>
+            <label>尺寸<input type="text" id="size" name="size"></label><span id="size-msg" class="msg"></span><br>
+            <label>作品年代 <input type="number" id="art_year" name="art_year"></label><span id="art_year-msg"
+                class="msg"></span><br>
+            <label>作品风格<input type="text" id="style" name="style"></label><span id="style-msg" class="msg"></span><br>
+        </p>
+        <div>
+            <button id="cancel">Cancel</button>
+            <button id="confirmBtn" type="submit">Confirm</button>
+        </div>
+    </form>
+</body>
+
+</html>

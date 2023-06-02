@@ -36,6 +36,11 @@ try {
     $req_user->execute();
 
     $row = $req_user->fetch();
+
+    if(empty($row)){
+        http_response_code(401);
+        die("用户名不存在");
+    }
     
     if (!empty($row["password"]) )
     {
@@ -49,7 +54,7 @@ try {
     }
     $pdo = null;
     http_response_code(401);
-    die("用户名或密码错误");
+    die("密码错误");
 } catch (PDOException $e) {
     // if (function_exists('http_response_code'))
 

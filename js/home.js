@@ -2,6 +2,8 @@
 // import "./art/art.js"
 // importScripts('./art/art.js')
 
+document.title = "艺术品商城";
+
 window.onload = function () {
     xhr = new XMLHttpRequest();
     xhr.open('GET', '../php/getLatestArt.php?art_number=5', true);
@@ -23,7 +25,7 @@ window.onload = function () {
                     pic.onclick = (function (pic) {
                         return function () {
                             console.log(pic.parentNode.parentNode.dataset.art_id);
-                            url = "artDetail.html?art_id=" + pic.parentNode.parentNode.dataset.art_id
+                            url = "../html/artDetail.html?art_id=" + pic.parentNode.parentNode.dataset.art_id
                             window.location.href = url;
                         };
                     })(pic);
@@ -34,4 +36,56 @@ window.onload = function () {
             }
         }
     }
+
+
+    document.getElementById("search").onclick = function () {
+        url = "../html/art.html?search_content=" + document.getElementById("search-content").value + "&search_assign=all"
+        location.href = url;
+    }
+
+    if (localStorage.getItem("username") != null) {
+        displaysome();
+    }
+    else {
+        hidesome();
+    }
+
+}
+
+
+
+logout = () => {
+    localStorage.removeItem("username")
+    localStorage.removeItem("user_id")
+}
+
+
+displaysome = () => {
+    document.getElementById("sayHello").innerText="你好，"+localStorage.getItem("username")
+    document.getElementById("cart-display").style.display = "block";
+    document.getElementById("release-display").style.display = "block";
+    document.getElementById("userinfo-display").style.display = "block";
+    document.getElementById("login-display").style.display = "none";
+    document.getElementById("logout-display").style.display = "block";
+}
+
+hidesome = () => {
+    document.getElementById("sayHello").display="none"
+    document.getElementById("cart-display").style.display = "none";
+    document.getElementById("release-display").style.display = "none";
+    document.getElementById("userinfo-display").style.display = "none";
+    document.getElementById("logout-display").style.display = "none";
+    document.getElementById("login-display").style.display = "block";
+}
+
+
+document.getElementById("logout").onclick = function () {
+    logout();
+    hidesome();
+}
+
+
+logout = () => {
+    localStorage.removeItem("username")
+    localStorage.removeItem("user_id")
 }

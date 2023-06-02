@@ -17,18 +17,20 @@ window.onload = function () {
                 //     art.alt = "不祥";
                 // } else {
                 art_id = art.art_id;
+                if(art.is_sold)
+                document.getElementById("sold").innerText = "已售罄";
                 document.getElementById("art-pic").src = "../pic/artPic/" + art.pic;
-                document.getElementById("art-name").innerText = art.art_name;
-                document.getElementById("author").innerText = art.author;
-                document.getElementById("price").innerText = art.price;
-                document.getElementById("description").innerText = art.description;
-                document.getElementById("weight").innerText = art.weight;
-                document.getElementById("size").innerText = art.size;
-                document.getElementById("art-era").innerText = art.art_era;
-                document.getElementById("style").innerText = art.style;
-                document.getElementById("visits").innerText = art.visits;
-                document.getElementById("is-sold").innerText = art.is_sold;
-                document.getElementById("create-at").innerHTML = art.create_at;
+                document.getElementById("art-name").innerText += art.art_name;
+                document.getElementById("author").innerText += art.author;
+                document.getElementById("price").innerText += art.price;
+                document.getElementById("description").innerText += art.description;
+                document.getElementById("weight").innerText += art.weight;
+                document.getElementById("size").innerText += art.size;
+                document.getElementById("art-era").innerText += art.art_era;
+                document.getElementById("style").innerText += art.style;
+                document.getElementById("visits").innerText += art.visits;
+                // document.getElementById("is-sold").innerText += art.is_sold;
+                document.getElementById("create-at").innerHTML += art.create_at;
                 // console.log(xhr.responseText);
             }
             else {
@@ -37,6 +39,8 @@ window.onload = function () {
         }
     }
 
+    // if (window.location.href.split("?")[0].endsWith("changeArt.html"))
+    //     return
 
     document.getElementById("add-cart").onclick = function () {
         xhr = new XMLHttpRequest();
@@ -70,7 +74,7 @@ window.onload = function () {
 
 
     document.getElementById("purchase").onclick = function () {
-        if(art_id==null){
+        if (art_id == null) {
             alert("购买失败，未获取到艺术品");
             return;
         }
@@ -78,9 +82,13 @@ window.onload = function () {
         array.push(art_id)
         purchase(array);
     }
+
+    document.getElementById("return-button").onclick=()=>{
+        window.location.href="../html/art.html";
+    }
 }
 
-function purchase(art_arr){
+function purchase(art_arr) {
     // json format
     art_arr = JSON.stringify(art_arr);
     xhr = new XMLHttpRequest();
@@ -99,5 +107,7 @@ function purchase(art_arr){
                 alert("购买失败，" + xhr.responseText);
             }
         }
-    }   
+    }
 }
+
+

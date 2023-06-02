@@ -1,0 +1,71 @@
+#single-art {
+    /* display: flex; */
+    /* text-align: center; */
+    /* display: table; */
+    columns: 2;
+    height: 10px;
+    font-size: 16pt;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+img{
+    width: 400px;
+}
+
+.sold{
+    color: red;
+    font-size: 60pt;
+    text-shadow: 1px 1px 2px white, 0 0 0.2em black;
+}
+
+button {
+    border: none;
+    border-radius: 20px;
+    background: none;
+    cursor: pointer;
+    height: 100px;
+    width: 200px;
+    font-size: 30px;
+    text-shadow: 1px 1px 2px plum
+}
+
+button:hover {
+    background: pink;
+}
+
+html{
+    background-color: cornsilk;
+}
+
+#description{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+
+#art-name{
+    text-align: center;
+    font-size: 40pt;
+    color: blueviolet;
+    text-shadow: 1px 1px 2px rgb(208, 47, 223);
+}
+
+img{
+    height: 400px;
+    width: auto;
+}
+
+
+#return-button{
+    position: absolute;
+    left: 1%;
+    top: 1%;
+    border-radius: 20px;
+    background: none;
+    cursor: pointer;
+    height: 50px;
+    width: 100px;
+    font-size: 20px;
+    text-shadow: 1px 1px 2px plum
+}

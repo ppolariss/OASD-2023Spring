@@ -1,0 +1,63 @@
+html{
+    background-color: honeydew;
+}
+button {
+    border: none;
+    border-radius: 20px;
+    background: none;
+    cursor: pointer;
+    height: 40px;
+    width: 60px;
+    font-size: 24px;
+    text-shadow: 1px 1px 2px plum
+}
+
+button:hover {
+    background: pink;
+}
+
+
+
+img{
+    height: 300px;
+    width: auto;
+    cursor: pointer;
+}
+
+body{
+    text-align: center;
+    font-size: large;
+}
+
+#released,#sold ,#purchased{
+    text-align: left;
+}
+
+.cataName{
+    font-size: 40px;
+    margin: 60px;
+    text-shadow: 1px 1px 2px rgb(208, 47, 223);
+}
+
+.art-name{
+    font-size: 18pt;
+    text-shadow: 1px 1px 2px white, 0 0 0.2em black;
+}
+
+#info{
+    text-align: left;
+}
+
+.art{
+    background-color: pink;
+    border-radius: 20px;
+
+    columns: 2;
+    align-items: center;
+    height: 300px;
+    /* height: auto; */
+    font-size: 16pt;
+    overflow: hidden;
+    margin-left:15% ;
+    margin-right: 15%;
+}

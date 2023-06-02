@@ -1,7 +1,36 @@
+footer {
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    background-color: #45a1ff;
+    color: #fff;
+}
+
+html{
+    background-color: aliceblue;
+}
+
+.header-list{
+    width: 100%;
+   /* background-color:  #45a1ff; */
+   vertical-align: baseline;
+}
+.header-list li{
+    display: inline-block;
+    padding: 10px;
+    /* font-size: 20px; */
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 2px;
+    transition: all 0.3s ease 0s;
+}
 
 .slogan {
     font-size: 24pt;
     color: red;
+    text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
 
     /* background: black; */
     /* text-decoration-color: aliceblue; */
@@ -19,18 +48,9 @@
     /* vertical-align: text-topl; */
 }
 
-.logo {
-    position: relative;
-    left: 5%;
-}
-
-.user-login {
-    position: relative;
-    right: 5%;
-    font-size: 20pt;
-}
 
 .header-list {
+    vertical-align: middle;
     list-style: none;
     display: flex;
     justify-content: space-around;
@@ -45,7 +65,9 @@
 
 
 body {
-    background-image: url("pic/background.jpg");
+    /* background-image: url("../pic/background.jpg") ; */
+    background: rgba(240, 235, 235, 0.3);
+    /* background: rgba(27, 36, 29, 0.936);  */
     background-attachment: fixed;
     shape-outside: margin-box;
     opacity: 0.85;
@@ -54,14 +76,18 @@ body {
 }
 
 
-
-.pic-container {
-    display: flex;
+.art {
+    background-color: pink;
+    border-radius: 20px;
+    
+    /* display: table; */
+    columns: 2;
     align-items: center;
     /* border-color: rgb(18, 99, 171); */
     height: 300px;
     margin: 5%;
-
+    font-size: 16pt;
+    overflow: hidden;
     /* height: 200px;
     display: flex;
     align-items: center;
@@ -69,12 +95,13 @@ body {
 }
 
 
-.pic-content {
-    background-color: #6c5a37;
-    color: #a79b7f;
-    border-radius: 20px;
+/* .art-img {
     height: 300px;
-    font-size: 16pt;
+    width: auto;
+} */
+
+.art-desciption {
+    height: 200px;
     overflow: scroll;
 }
 
@@ -82,10 +109,34 @@ body {
     display: none
 }
 
+div img{
+    height: 300px;
+}
 
 
+.art-name{
+    text-align: center;
+    font-size: 18pt;
+    text-shadow: 1px 1px 2px white, 0 0 0.2em black;
+}
+#logo-img{
+    position: absolute;
+    left: 1%;
+    /* height: auto; */
+}
+
+#latest-art{
+    /* text-align: center;
+    display: table
+    table-column;
+    column-count: 2; */
+}
 
 
+#sayHello{
+    text-align: right;
+    font-size: large;
+}
 
 
 /* h1{font-size:28pt;font-weight:bold;color:red;}

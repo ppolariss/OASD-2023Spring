@@ -1,7 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION["user_id"]))
-{
+if (!isset($_SESSION["user_id"])) {
     http_response_code(401);
     die("未登录");
 }
@@ -19,8 +18,11 @@ try {
         die(200);
     }
     $art_array = explode(",", $cart['art_id_list']);
-    $cart_array = array(); 
-    foreach ($art_array as $art_id ) {
+    $cart_array = array();
+    foreach ($art_array as $art_id) {
+        // echo $art_id;
+        if ($art_id == "")
+            continue;
         $art = $pdo->query("SELECT * FROM art WHERE art_id = $art_id")->fetch();
         $cart_array[] = $art;
     }

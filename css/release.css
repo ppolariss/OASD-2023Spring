@@ -2,8 +2,47 @@
     color: red;
 }
 
+html{
+    background-color:azure;
+}
+button {
+    border: none;
+    border-radius: 20px;
+    background: none;
+    cursor: pointer;
+    height: 40px;
+    width: 100px;
+    font-size: 24px;
+    text-shadow: 1px 1px 2px plum
+}
 
+button:hover {
+    background: pink;
+}
 
+#releaseForm{
+    margin-left: 30%;
+    margin-right:30% ;
+    background-color:snow;
+    text-align: center;
+    /* text-align: center; */
+    /* display: flex; */
+}
+
+#input-form{
+    margin-left: 25%;
+    text-align: left;
+    border-radius: 5%;
+    border-color:violet;
+    border-width: 500px;
+    font-size: 24px;
+    color: blueviolet;
+    /* text-align: right; */
+}
+
+#pic{
+    font-size: large;
+}
 
 /* 无法到图片边缘 */
 * {
@@ -14,7 +53,7 @@
 .box {
     width: 350px;
     height: 350px;
-    margin: 100px;
+    margin: 50px;
     border: 1px solid #ccc;
     position: relative;
 }
@@ -30,7 +69,6 @@
     display: none;
 }
 
-/*mask的中文是：遮罩*/
 .mask {
     width: 175px;
     height: 175px;

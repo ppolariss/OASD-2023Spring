@@ -17,9 +17,10 @@ try {
     else if ($search_assign == "author")
         $sql = "SELECT * FROM art WHERE author LIKE '%$search_content%'";
     else
-        $sql = "SELECT * FROM art WHERE art_name LIKE '%$search_content%' OR description LIKE '%$search_content%' OR author LIKE '%$search_content%' or art_era LIKE '%$search_content%'";
+        $sql = "SELECT * FROM art WHERE art_name LIKE '%$search_content%' OR description LIKE '%$search_content%' OR author LIKE '%$search_content%'";
     $art_array = $pdo->query($sql)->fetchAll();
     $pdo = null;
+    // echo $sql;
     echo json_encode($art_array);
     die(200);
 } catch (PDOException $e) {
