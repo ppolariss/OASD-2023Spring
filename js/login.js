@@ -87,81 +87,8 @@ function exit() {
     localStorage.removeItem("user_id")
 }
 
-function register() {
-    if (typeof canReg == 'undefined')
-        canReg = true;
 
-    if (canReg) {
-        canReg = false;
-        setTimeout(function () { canReg = true; }, 3000);
-    } else {
-        alert('请勿过快点击');
-        return;
-    }
 
-    var xhr = new XMLHttpRequest();
-    var FD = new FormData(document.getElementById("register_form"));
-    if (!validateCode(FD.get("verificationCode2"))) {
-        alert("验证码错误")
-        return
-    }
-    if (FD.get("register_password") != FD.get("register_password_confirm")) {
-        alert("两次输入密码不同")
-        return;
-    }
-
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4) {
-            if (xhr.status == 200 || xhr.status == 304) {
-                // alert("Request was successful:" + xhr.responseText);
-                alert("注册成功");
-                document.getElementById("register_form").reset();
-                tolog();
-            }
-            else {
-                // alert("Request was unsuccessful:" + xhr.statusText);
-                alert("注册失败，" + xhr.responseText)
-            }
-        }
-    }
-    xhr.open("post", "../php/register.php", true);
-    xhr.send(FD);
-}
-
-document.getElementById("register_form").addEventListener("submit", function (event) {
-    event.preventDefault();
-    register();
-});
-
-document.getElementById("change_pwd").onclick = function () {
-    var form = document.getElementById("password_form");
-
-    function sendData() {
-        var xhr = new XMLHttpRequest();
-
-        var FD = new FormData(form);
-        if (FD.get("password_new_password") != FD.get("password_check_password")) {
-            alert("两次输入密码不同")
-            return;
-        }
-
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState == 4) {
-                if (xhr.status == 200 || xhr.status == 304) {
-                    alert("修改密码成功");
-                    tolog();
-                }
-                else {
-                    alert("修改密码失败，" + xhr.responseText)
-                }
-            }
-        }
-        xhr.open("post", "../php/changePwd.php", true);
-        xhr.send(FD);
-    }
-
-    sendData();
-};
 
 
 
@@ -184,9 +111,14 @@ window.onload = function () {
         log.style.display = "block"
         reg.style.display = "none"
         psw.style.display = "none"
-        // document.getElementById("canvas").removeAttribute("id")
-        // document.getElementById("canvas2").setAttribute("id", "canvas")
+
+        canvas = document.getElementById("canvas")
+        canvas2 = document.getElementById("canvas2")
+        canvas.setAttribute("id", "canvas2")
+        canvas2.setAttribute("id", "canvas")
+        drawPic();
     }
+    
     tpsw[0].onclick = function () {
         psw.style.display = "block"
         reg.style.display = "none"
@@ -197,15 +129,103 @@ window.onload = function () {
         reg.style.display = "block"
         log.style.display = "none"
         psw.style.display = "none"
-
-        // document.getElementById("canvas").removeAttribute("id")
-        // document.getElementById("canvas").setAttribute("id", "canvas2")
-        // document.getElementById("canvas2").removeAttribute("id")
-        // document.getElementById("canvas").setAttribute("id", "canvas")
+// 不能在同时存在两个id相同的canvas时获取canvas
+        canvas = document.getElementById("canvas")
+        canvas2 = document.getElementById("canvas2")
+        canvas.setAttribute("id", "canvas2")
+        canvas2.setAttribute("id", "canvas")
+        drawPic();
     }
 
     drawPic();
 
+
+    function register() {
+        if (typeof canReg == 'undefined')
+            canReg = true;
+    
+        if (canReg) {
+            canReg = false;
+            setTimeout(function () { canReg = true; }, 3000);
+        } else {
+            alert('请勿过快点击');
+            return;
+        }
+    
+        var xhr = new XMLHttpRequest();
+        var FD = new FormData(document.getElementById("register_form"));
+        if (!validateCode(FD.get("verificationCode2"))) {
+            alert("验证码错误")
+            return
+        }
+        if (FD.get("register_password") != FD.get("register_password_confirm")) {
+            alert("两次输入密码不同")
+            return;
+        }
+    
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4) {
+                if (xhr.status == 200 || xhr.status == 304) {
+                    // alert("Request was successful:" + xhr.responseText);
+                    alert("注册成功");
+                    document.getElementById("register_form").reset();
+                    tolog();
+                }
+                else {
+                    // alert("Request was unsuccessful:" + xhr.statusText);
+                    alert("注册失败，" + xhr.responseText)
+                    drawPic()
+                }
+            }
+        }
+        xhr.open("post", "../php/register.php", true);
+        xhr.send(FD);
+    }
+    
+    document.getElementById("register_form").addEventListener("submit", function (event) {
+        event.preventDefault();
+        register();
+    });
+
+
+    document.getElementById("change_pwd").onclick = function () {
+        var form = document.getElementById("password_form");
+    
+        function sendData() {
+            var xhr = new XMLHttpRequest();
+    
+            var FD = new FormData(form);
+            if (FD.get("password_new_password") != FD.get("password_check_password")) {
+                alert("两次输入密码不同")
+                return;
+            }
+    
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+                    if (xhr.status == 200 || xhr.status == 304) {
+                        alert("修改密码成功");
+                        log.style.display = "block"
+                        reg.style.display = "none"
+                        psw.style.display = "none"
+                        drawPic();
+                    }
+                    else {
+                        alert("修改密码失败，" + xhr.responseText)
+                    }
+                }
+            }
+            xhr.open("post", "../php/changePwd.php", true);
+            xhr.send(FD);
+        }
+    
+        sendData();
+    };    
+
+    //先阻止画布默认点击发生的行为再执行drawPic()方法
+    document.getElementById("canvas").onclick = function (e) {
+        e.preventDefault();
+        drawPic()
+    };
 }
 
 //检查验证码是否正确
@@ -237,11 +257,7 @@ function randomColor(min, max) {
     var _b = randomNum(min, max);
     return "rgb(" + _r + "," + _g + "," + _b + ")";
 }
-//先阻止画布默认点击发生的行为再执行drawPic()方法
-document.getElementById("canvas").onclick = function (e) {
-    e.preventDefault();
-    drawPic()
-};
+
 function drawPic() {
     //获取到元素canvas
     var $canvas = document.getElementById("canvas");

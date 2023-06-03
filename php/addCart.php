@@ -19,15 +19,20 @@ try {
         http_response_code(400);
         die("The art has been sold.");
     }
+    $now = date("Y-m-d H:i:s");
     // get the list art_id_list of the cart
     $cart = $pdo->query("SELECT * FROM cart WHERE user_id = $user_id")->fetch();
+    if ($cart == null) {
+        $pdo->exec("INSERT INTO cart (user_id, art_id_list, update_at) VALUES ($user_id, $art_id, '$now')");
+        $pdo = null;
+        die(200);
+    }
     $cart_array = explode(",", $cart['art_id_list']);
     if(in_array($art_id, $cart_array)) {
         http_response_code(400);
         die("The art has been added to the cart.");
     }
     $cart = $cart['art_id_list'] . "," . $art_id;
-    $now = date("Y-m-d H:i:s");
     $sql = "UPDATE cart SET art_id_list = '$cart', update_at = '$now' WHERE user_id = $user_id";
 
     $pdo->exec($sql);

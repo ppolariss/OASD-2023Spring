@@ -53,7 +53,7 @@ window.onload = function () {
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4) {
                 if (xhr.status == 200 || xhr.status == 304) {
-                    console.log("添加购物车成功");
+                    alert("添加购物车成功");
                 }
                 else {
                     alert("添加购物车失败，" + xhr.responseText);
@@ -101,6 +101,8 @@ function purchase(art_arr) {
         if (xhr.readyState == 4) {
             if (xhr.status == 200 || xhr.status == 304) {
                 alert("购买成功");
+                // window.location.href = "../html/cart.html";
+                location.reload();
                 console.log(xhr.responseText);
             }
             else {

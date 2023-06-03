@@ -21,17 +21,18 @@
 
     <button class="return" id="return-button">返回</button>
 
-    <canvas id="canvas" width="150px" height="50px"></canvas>
+   
     <div class="box login-box" id="login-box">
         <div class="input-box">
 
             <form action="login.php" method="post" id="loginForm">
                 <div class="hint-text" id="login-username-text">请输入用户名</div>
                 <input id="login_username" name="login_username">
-                <div class="hint-text" id="login-password-text" type="password">请输入密码</div>
-                <input type="login_password" name="login_password">
+                <div class="hint-text" id="login-password-text" >请输入密码</div>
+                <input id="login_password" name="login_password" type="password">
                 <div class="hint-text" id="login-verificationCode-text">请输入验证码</div>
                 <input type="text" id="verificationCode" name="verificationCode">
+                <canvas id="canvas" width="150px" height="50px"></canvas>
             </form>
 
         </div>
@@ -87,7 +88,7 @@
 
                 <div class="hint-text" id="register-verificationCode-text">请输入验证码</div>
                 <input type="text" id="verificationCode2" name="verificationCode2">
-                <!-- <canvas id="canvas2" width="150px" height="50px"></canvas> -->
+                <canvas id="canvas2" width="150px" height="50px"></canvas>
                 
                 <button type="submit" class="login-in-button">注册</button>
                 <!-- onclick="register()" -->

@@ -65,7 +65,7 @@ try {
         }
 
 
-        $sql = "INSERT INTO user ( username, password,hash, phone, email,address,birthday,nationality,gender,account) 
+        $sql = "INSERT INTO user ( username, password, hash, phone, email, address, birthday, nationality, gender, balance)
     VALUES ( '$username', '$hash_pwd','$hash','$phone', '$email','$address', '$birthday', '$nationality', '$gender',0)";
 
 

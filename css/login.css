@@ -7,7 +7,9 @@
 html{
     background-color: seashell;
 }
-
+#register_form{
+    text-align: left;
+}
 .logo {
     text-align: center;
     width: 60pt;
@@ -28,7 +30,7 @@ html{
     margin: auto;
     padding: 0%;
     width: 700px;
-    height: 600px;
+    height: 625px;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -168,4 +170,5 @@ input {
 
 #gender1,#gender2,#gender3,#gender4{
     height: 25px;
+    margin: -30%;
 }

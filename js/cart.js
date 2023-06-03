@@ -68,6 +68,7 @@ document.getElementById("submit").onclick = () => {
             if (xhr.status == 200 || xhr.status == 304) {
                 console.log(xhr.responseText);
                 alert("购买成功");
+                location.reload();
                 // window.location.reload();
             }
             else {
@@ -105,6 +106,7 @@ document.getElementById("delete").onclick = () => {
             if (xhr.status == 200 || xhr.status == 304) {
                 console.log(xhr.responseText);
                 alert("删除成功");
+                location.reload();
                 // window.location.reload();
             }
             else {

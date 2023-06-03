@@ -31,7 +31,7 @@ try {
         }
         if ($art['is_sold'] == 1) {
             http_response_code(400);
-            die("art_id_list中有已售出的art_id");
+            die("存在已售出的商品");
         }
         $price += $art['price'];
     }
